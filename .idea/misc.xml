@@ -10,6 +10,18 @@
         <entry key="..\:/AndroidStudioProjects/PetsCareNew/app/src/main/res/layout/activity_reminders.xml" value="0.20833333333333334" />
         <entry key="..\:/AndroidStudioProjects/PetsCareNew/app/src/main/res/layout/activity_to_do.xml" value="0.20833333333333334" />
         <entry key="..\:/AndroidStudioProjects/PetsCareNew/app/src/main/res/layout/list_row.xml" value="0.5" />
+        <entry key="app/src/main/res/drawable-v24/ic_fab_add.xml" value="0.16203703703703703" />
+        <entry key="app/src/main/res/drawable-v24/radius_border_button.xml" value="0.16203703703703703" />
+        <entry key="app/src/main/res/drawable-v24/radius_border_button_text.xml" value="0.16203703703703703" />
+        <entry key="app/src/main/res/layout/activity_add_modify_task.xml" value="0.22299612700253166" />
+        <entry key="app/src/main/res/layout/activity_add_pet.xml" value="0.2509057971014493" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2509057971014493" />
+        <entry key="app/src/main/res/layout/activity_main_pets_list.xml" value="0.2509057971014493" />
+        <entry key="app/src/main/res/layout/activity_reminders.xml" value="0.2509057971014493" />
+        <entry key="app/src/main/res/layout/activity_to_do.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/date_picker.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/list_row.xml" value="0.2509057971014493" />
+        <entry key="app/src/main/res/layout/task_list_row.xml" value="0.1512951474308925" />
       </map>
     </option>
   </component>
