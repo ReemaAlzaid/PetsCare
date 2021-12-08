@@ -61,7 +61,6 @@
             android:textSize="20sp" />
 
 
-
         <LinearLayout
             android:id="@+id/custom_config"
             android:layout_width="wrap_content"
