@@ -22,6 +22,8 @@
         <entry key="app/src/main/res/layout/date_picker.xml" value="0.1" />
         <entry key="app/src/main/res/layout/list_row.xml" value="0.2509057971014493" />
         <entry key="app/src/main/res/layout/task_list_row.xml" value="0.1512951474308925" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24375" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/icon_launcher.xml" value="0.24375" />
       </map>
     </option>
   </component>

@@ -17,8 +17,8 @@
             android:id="@+id/checkBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColorHighlight="#4CAF50"
-            android:textColorLink="#4CAF50" />
+            android:textColorHighlight="#8DCD43"
+            android:textColorLink="#8DCD43" />
 
         <Space
             android:layout_width="15dp"
