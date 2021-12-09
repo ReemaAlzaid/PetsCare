@@ -187,6 +187,6 @@
         android:contentDescription="Add Task"
         android:onClick="openAddModifyTask"
         android:src="@drawable/ic_fab_add"
-        app:backgroundTint="@color/colorAccent" />
+        app:backgroundTint="#FFEB3B" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
