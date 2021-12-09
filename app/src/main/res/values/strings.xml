@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PetsCareNew</string>
+    <string name="delete_confirmation">Confirmation</string>
+    <string name="sureToDelete">Are you sure you want to delete the pet</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="confirmation">Completed the pet!..</string>
 </resources>

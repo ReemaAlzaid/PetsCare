@@ -12,19 +12,17 @@
         <activity
             android:name=".ToDo"
             android:exported="true" />
-        <activity
-            android:name=".Reminders"
-            android:exported="true" />
-        <activity
-            android:name=".AddPet"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivityPetsList"
-            android:exported="true" />
 
         <activity android:name=".AddModifyTask"
             android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".MainActivityPetsList"
+            android:exported="true">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -34,5 +32,11 @@
             </intent-filter>
         </activity>
 
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
     </application>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 </manifest>

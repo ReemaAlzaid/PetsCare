@@ -7,16 +7,6 @@
     android:background="#FFFFFF"
     tools:context=".ToDo">
 
-    <ImageView
-        android:id="@+id/imageViewhometodo"
-        android:layout_width="50dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="350dp"
-        android:layout_marginTop="7dp"
-        android:onClick="Home3"
-        app:srcCompat="@drawable/home"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -183,5 +173,15 @@
         android:onClick="openAddModifyTask"
         android:src="@drawable/ic_fab_add"
         app:backgroundTint="@color/colorAccent" />
+
+    <ImageView
+        android:id="@+id/imageViewhometodo"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="350dp"
+        android:layout_marginTop="7dp"
+        android:onClick="Home3"
+        app:srcCompat="@drawable/home"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

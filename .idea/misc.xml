@@ -3,6 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/drawable/btn_background.xml" value="0.22135416666666666" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/drawable/btn_border.xml" value="0.11851851851851852" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/drawable/ic_add_black_24dp.xml" value="0.11851851851851852" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/drawable/ic_arrow_back_black_24dp.xml" value="0.11851851851851852" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_add_modify_task.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_add_pet.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_main_pet_list.xml" value="0.466824644549763" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_main_pets_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_reminders.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/activity_to_do.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/date_picker.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/fragment_create_pet.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/item_pet.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/list_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/layout/task_list_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidStudioProjects/FinalPetCare1/app/src/main/res/menu/menu.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/PetsCareNew/app/src/main/res/drawable/ic_launcher_background.xml" value="0.22135416666666666" />
         <entry key="..\:/AndroidStudioProjects/PetsCareNew/app/src/main/res/layout/activity_add_pet.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/PetsCareNew/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />

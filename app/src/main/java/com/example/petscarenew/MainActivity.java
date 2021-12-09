@@ -1,10 +1,10 @@
 package com.example.petscarenew;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +16,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void PetsList(View view) {
         Intent intent = new Intent(MainActivity.this, MainActivityPetsList.class);
-        MainActivity.this.startActivity(intent);
-    }
-    public void RemindersBtn(View view) {
-        Intent intent = new Intent(MainActivity.this, Reminders.class);
         MainActivity.this.startActivity(intent);
     }
     public void TodoBtn(View view) {

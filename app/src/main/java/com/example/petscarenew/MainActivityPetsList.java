@@ -1,46 +1,80 @@
 package com.example.petscarenew;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.database.Cursor;
+import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+import android.view.WindowManager;
+import android.widget.TextView;
 
-public class MainActivityPetsList extends AppCompatActivity {
-    DBPets myDP;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
+import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+public class MainActivityPetsList extends BaseActivity implements CreatePet.setRefreshListener {
+
+    @BindView(R.id.taskRecycler)
+    RecyclerView taskRecycler;
+    @BindView(R.id.addPet)
+    TextView addTask;
+    PetAdapter taskAdapter;
+    List<Pet> pets = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_pets_list);
-        ViewAll();
+        setContentView(R.layout.activity_main_pet_list);
+        ButterKnife.bind(this);
+        setUpAdapter();
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        PackageManager pm = getPackageManager();
+        addTask.setOnClickListener(view -> {
+            CreatePet createPet = new CreatePet();
+            createPet.setTaskId(0, false, this, MainActivityPetsList.this);
+            createPet.show(getSupportFragmentManager(), createPet.getTag());
+        });
+
+        getSavedTasks();
+
+
     }
 
-    public void ViewAll(){
-        /*
-        Cursor res = myDP.getAllData();
-        if(res.getCount()==0){
-            // show message
-            return;
-        }
-        StringBuffer buffer = new StringBuffer();
-        while(res.moveToNext()){
-            res.getString(1)+"\n");
-            res.getString(2)+"\n");
-            res.getString(3)+"\n\n";
-        }
-
-         */
+    public void setUpAdapter() {
+        taskAdapter = new PetAdapter(this, pets, this);
+        taskRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        taskRecycler.setAdapter(taskAdapter);
     }
 
+    private void getSavedTasks() {
 
-    public void insertPet(View view) {
-        Intent intent = new Intent(MainActivityPetsList.this, AddPet.class);
-        MainActivityPetsList.this.startActivity(intent);
+        class GetSavedTasks extends AsyncTask<Void, Void, List<Pet>> {
+            @Override
+            protected List<Pet> doInBackground(Void... voids) {
+                pets = DatabaseClient
+                        .getInstance(getApplicationContext())
+                        .getAppDatabase()
+                        .dataBaseAction()
+                        .getAllTasksList();
+                return pets;
+            }
+
+            @Override
+            protected void onPostExecute(List<Pet> tasks) {
+                super.onPostExecute(tasks);
+                setUpAdapter();
+            }
+        }
+
+        GetSavedTasks savedTasks = new GetSavedTasks();
+        savedTasks.execute();
+    }
+
+    @Override
+    public void refresh() {
+        getSavedTasks();
     }
 
     public void Home1(View view) {
