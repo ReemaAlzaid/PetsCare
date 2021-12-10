@@ -55,6 +55,35 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="150dp"
+                android:text="You have no pets"
+                android:textColor="@color/purple_200"
+                android:textSize="34dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:text="Add one"
+                android:textColor="@color/purple_200"
+                android:textSize="34dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="110dp"
+                android:layout_height="365dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="200dp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/taskRecycler"
                 android:layout_width="match_parent"

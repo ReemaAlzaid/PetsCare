@@ -64,13 +64,13 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.AppTheme_Dialog);
                     alertDialogBuilder.setTitle(R.string.delete_confirmation).setMessage(R.string.sureToDelete).
                             setPositiveButton("yes", (dialog, which) -> {
-                                deleteTaskFromId(pet.getPetID(), position);
+                                deletePetFromId(pet.getPetID(), position);
                             })
                             .setNegativeButton(R.string.no, (dialog, which) -> dialog.cancel()).show();
                     break;
                 case R.id.menuUpdate:
                     CreatePet createPet = new CreatePet();
-                    createPet.setTaskId(pet.getPetID(), true, context, context);
+                    createPet.setPetId(pet.getPetID(), true, context, context);
                     createPet.show(context.getSupportFragmentManager(), createPet.getTag());
                     break;
             }
@@ -79,34 +79,29 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         popupMenu.show();
     }
 
-    public void showCompleteDialog(int taskId, int position) {
-        Dialog dialog = new Dialog(context, R.style.AppTheme);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dialog.show();
-    }
 
 
-    private void deleteTaskFromId(int taskId, int position) {
-        class GetSavedTasks extends AsyncTask<Void, Void, List<Pet>> {
+    private void deletePetFromId(int petId, int position) {
+        class GetSavedPets extends AsyncTask<Void, Void, List<Pet>> {
             @Override
             protected List<Pet> doInBackground(Void... voids) {
                 DatabaseClient.getInstance(context)
                         .getAppDatabase()
                         .dataBaseAction()
-                        .deletePetFromId(taskId);
+                        .deletePetFromId(petId);
 
                 return petList;
             }
 
             @Override
-            protected void onPostExecute(List<Pet> tasks) {
-                super.onPostExecute(tasks);
+            protected void onPostExecute(List<Pet> pets) {
+                super.onPostExecute(pets);
                 removeAtPosition(position);
                 setRefreshListener.refresh();
             }
         }
-        GetSavedTasks savedTasks = new GetSavedTasks();
-        savedTasks.execute();
+        GetSavedPets savedPets = new GetSavedPets();
+        savedPets.execute();
     }
 
     private void removeAtPosition(int position) {

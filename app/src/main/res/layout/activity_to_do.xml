@@ -7,22 +7,6 @@
     android:background="#FFFFFF"
     tools:context=".ToDo">
 
-    <ImageView
-        android:id="@+id/imageViewhometodo"
-        android:layout_width="50dp"
-        android:layout_height="57dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="363dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="118dp"
-        android:onClick="Home3"
-        app:srcCompat="@drawable/home"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
-
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -187,6 +171,22 @@
         android:contentDescription="Add Task"
         android:onClick="openAddModifyTask"
         android:src="@drawable/ic_fab_add"
-        app:backgroundTint="#FFEB3B" />
+        app:backgroundTint="@color/icon_launcher_background" />
+
+    <ImageView
+        android:id="@+id/imageViewhometodo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="118dp"
+        android:onClick="Home3"
+        app:srcCompat="@drawable/home"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

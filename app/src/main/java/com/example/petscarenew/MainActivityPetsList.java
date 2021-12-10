@@ -6,10 +6,14 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
@@ -21,6 +25,12 @@ public class MainActivityPetsList extends BaseActivity implements CreatePet.setR
     @BindView(R.id.addPet)
     TextView addTask;
     PetAdapter taskAdapter;
+    @BindView(R.id.img)
+    ImageView img;
+    @BindView(R.id.textView4)
+    TextView hide1;
+    @BindView(R.id.textView7)
+    TextView hide2;
     List<Pet> pets = new ArrayList<>();
 
     @Override
@@ -31,9 +41,10 @@ public class MainActivityPetsList extends BaseActivity implements CreatePet.setR
         setUpAdapter();
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         PackageManager pm = getPackageManager();
+        Glide.with(getApplicationContext()).load(R.drawable.up).into(img);
         addTask.setOnClickListener(view -> {
             CreatePet createPet = new CreatePet();
-            createPet.setTaskId(0, false, this, MainActivityPetsList.this);
+            createPet.setPetId(0, false, this, MainActivityPetsList.this);
             createPet.show(getSupportFragmentManager(), createPet.getTag());
         });
 
@@ -64,6 +75,9 @@ public class MainActivityPetsList extends BaseActivity implements CreatePet.setR
             @Override
             protected void onPostExecute(List<Pet> tasks) {
                 super.onPostExecute(tasks);
+                img.setVisibility(tasks.isEmpty() ? View.VISIBLE : View.GONE);
+                hide1.setVisibility(tasks.isEmpty() ? View.VISIBLE : View.GONE);
+                hide2.setVisibility(tasks.isEmpty() ? View.VISIBLE : View.GONE);
                 setUpAdapter();
             }
         }

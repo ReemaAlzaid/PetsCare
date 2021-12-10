@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E6BB0F"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
     <TextView
@@ -37,7 +37,8 @@
     <FrameLayout
         android:layout_width="114dp"
         android:layout_height="143dp"
-        android:background="#E4BC0B"
+        android:background="@drawable/btn_border"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:clickable="true"
         android:onClick="PetsList"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,15 +72,15 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="109dp"
-        android:layout_height="111dp"
+        android:layout_width="99dp"
+        android:layout_height="99dp"
         android:onClick="TodoBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.847"
+        app:layout_constraintHorizontal_bias="0.846"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.559"
+        app:layout_constraintVertical_bias="0.553"
         app:srcCompat="@drawable/todo"
         tools:ignore="OnClick,SpeakableTextPresentCheck" />
 
@@ -99,7 +100,7 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintHorizontal_bias="0.797"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.65"

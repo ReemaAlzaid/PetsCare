@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -30,7 +32,9 @@ public class CreatePet extends BottomSheetDialogFragment {
     EditText Age;
     @BindView(R.id.addPet)
     Button addPet;
-    int taskId;
+    @BindView(R.id.TitleAdd)
+    TextView TitleAdd;
+    int petID;
     boolean isEdit;
     Pet pet;
     setRefreshListener setRefreshListener;
@@ -50,8 +54,8 @@ public class CreatePet extends BottomSheetDialogFragment {
         }
     };
 
-    public void setTaskId(int taskId, boolean isEdit, setRefreshListener setRefreshListener, MainActivityPetsList activity) {
-        this.taskId = taskId;
+    public void setPetId(int PetId, boolean isEdit, setRefreshListener setRefreshListener, MainActivityPetsList activity) {
+        this.petID = PetId;
         this.isEdit = isEdit;
         this.activity = activity;
         this.setRefreshListener = setRefreshListener;
@@ -67,15 +71,23 @@ public class CreatePet extends BottomSheetDialogFragment {
         dialog.setContentView(contentView);
         addPet.setOnClickListener(view -> {
             if(validateFields())
-            createTask();
+            createPet();
         });
         if (isEdit) {
-            showTaskFromId();
+            showPetFromId();
         }
     }
 
     public boolean validateFields() {
         int counter =0;
+        try{
+            int checkAge = Integer.parseInt(Age.getText().toString());
+        }catch (NumberFormatException ex) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
+            alertDialogBuilder.setTitle("Warning").setMessage("Age must be a number only").show();
+            return false;
+        }
+
         if(Petname.getText().toString().equalsIgnoreCase("")) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
             alertDialogBuilder.setTitle("Warning").setMessage("Please enter a valid name").show();
@@ -116,6 +128,7 @@ public class CreatePet extends BottomSheetDialogFragment {
             return false;
         }
 
+
         if(counter==3){
             return true;
         }
@@ -131,8 +144,8 @@ public class CreatePet extends BottomSheetDialogFragment {
         super.onDestroyView();
     }
 
-    private void createTask() {
-        class saveTaskInBackend extends AsyncTask<Void, Void, Void> {
+    private void createPet() {
+        class savePetInBackend extends AsyncTask<Void, Void, Void> {
             @SuppressLint("WrongThread")
             @Override
             protected Void doInBackground(Void... voids) {
@@ -148,7 +161,7 @@ public class CreatePet extends BottomSheetDialogFragment {
                 else
                     DatabaseClient.getInstance(getActivity()).getAppDatabase()
                             .dataBaseAction()
-                            .updateAnExistingRow(taskId, Petname.getText().toString(),
+                            .updateAnExistingRow(petID, Petname.getText().toString(),
                                     Description.getText().toString(),
                                     Age.getText().toString());
 
@@ -164,18 +177,18 @@ public class CreatePet extends BottomSheetDialogFragment {
 
             }
         }
-        saveTaskInBackend st = new saveTaskInBackend();
+        savePetInBackend st = new savePetInBackend();
         st.execute();
     }
 
 
-    private void showTaskFromId() {
-        class showTaskFromId extends AsyncTask<Void, Void, Void> {
+    private void showPetFromId() {
+        class showPetFromId extends AsyncTask<Void, Void, Void> {
             @SuppressLint("WrongThread")
             @Override
             protected Void doInBackground(Void... voids) {
                 pet = DatabaseClient.getInstance(getActivity()).getAppDatabase()
-                        .dataBaseAction().selectDataFromAnId(taskId);
+                        .dataBaseAction().selectDataFromAnId(petID);
                 return null;
             }
 
@@ -185,7 +198,7 @@ public class CreatePet extends BottomSheetDialogFragment {
                 setDataInUI();
             }
         }
-        showTaskFromId st = new showTaskFromId();
+        showPetFromId st = new showPetFromId();
         st.execute();
     }
 
@@ -193,9 +206,64 @@ public class CreatePet extends BottomSheetDialogFragment {
         Petname.setText(pet.getName());
         Description.setText(pet.getDescription());
         Age.setText(pet.getAge());
+        TitleAdd.setText("Update Pet");
+        addPet.setText("Update Pet");
     }
 
     public interface setRefreshListener {
         void refresh();
+    }
+
+    public boolean validateFieldsTest(String name,String Age,String des) {
+        int counter =0;
+        if(name.equalsIgnoreCase("")) {
+            System.out.println("Please enter a valid name");
+            Log.d("myTag", "This is my message");
+            return false;
+        }
+        else if(des.equalsIgnoreCase("")) {
+            System.out.println("Please enter a valid description");
+
+            return false;
+        }
+        else if(Age.equalsIgnoreCase("")) {
+            System.out.println("Please enter a valid Age");
+            return false;
+        }
+        try{
+            int checkAge = Integer.parseInt(Age);
+        }catch (NumberFormatException ex) {
+            System.out.println("Age must be a number only");
+            return false;
+        }
+        if(name.length()<=15 && name.length()>0)
+            counter++;
+        else {
+            System.out.println("Name must be less than or equal to 15");
+            return false;
+        }
+
+        if(Age.length()<=2 && Age.length()>0)
+            counter++;
+        else {
+            System.out.println("Age must be 2 or 1 digit only");
+            return false;
+        }
+
+        if(des.length()<=30 && des.length()>0)
+            counter++;
+        else {
+            System.out.println("Description must be less than or equal to 30");
+            return false;
+        }
+
+        if(counter==3){
+            return true;
+        }
+        else{
+            System.out.println("Pet has not been added successfully. Please check all fields");
+
+            return false; }
+
     }
 }
