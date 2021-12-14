@@ -1,9 +1,7 @@
 package com.example.petscarenew;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,15 +23,17 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
     private MainActivityPetsList context;
     private LayoutInflater inflater;
     private List<Pet> petList;
-    Date date = null;
     String outputDateString = null;
     CreatePet.setRefreshListener setRefreshListener;
-
     public PetAdapter(MainActivityPetsList context, List<Pet> petList, CreatePet.setRefreshListener setRefreshListener) {
         this.context = context;
         this.petList = petList;
         this.setRefreshListener = setRefreshListener;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
+
+    public PetAdapter() {
+
     }
 
     @NonNull
@@ -62,6 +61,7 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
             switch (item.getItemId()) {
                 case R.id.menuDelete:
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context, R.style.AppTheme_Dialog);
+                    //alertDialogBuilder.setTitle(R.string.delete_confirmation).setMessage(pet.getPetID()+" id<->postion "+position).
                     alertDialogBuilder.setTitle(R.string.delete_confirmation).setMessage(R.string.sureToDelete).
                             setPositiveButton("yes", (dialog, which) -> {
                                 deletePetFromId(pet.getPetID(), position);
@@ -81,16 +81,17 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
 
 
 
-    private void deletePetFromId(int petId, int position) {
+    protected void deletePetFromId(int petId, int position) {
         class GetSavedPets extends AsyncTask<Void, Void, List<Pet>> {
             @Override
-            protected List<Pet> doInBackground(Void... voids) {
-                DatabaseClient.getInstance(context)
-                        .getAppDatabase()
-                        .dataBaseAction()
-                        .deletePetFromId(petId);
 
-                return petList;
+            protected List<Pet> doInBackground(Void... voids) {
+                    DatabaseClient.getInstance(context)
+                            .getAppDatabase()
+                            .dataBaseAction()
+                            .deletePetFromId(petId);
+
+                    return petList;
             }
 
             @Override
@@ -102,6 +103,24 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.PetViewHolder> {
         }
         GetSavedPets savedPets = new GetSavedPets();
         savedPets.execute();
+    }
+    protected boolean deletePetFromIdTest(int petId, int position) {
+        try{
+        final Pet pet = petList.get(position);
+            if (pet.getPetID() == petId) {
+                DatabaseClient.getInstance(context)
+                        .getAppDatabase()
+                        .dataBaseAction()
+                        .deletePetFromId(petId);
+                removeAtPosition(position);
+                setRefreshListener.refresh();
+                return true;
+            }
+            return false;
+        }
+        catch (NullPointerException n){
+            return false;
+        }
     }
 
     private void removeAtPosition(int position) {

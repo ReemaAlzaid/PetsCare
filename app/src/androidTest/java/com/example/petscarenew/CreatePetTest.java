@@ -1,11 +1,15 @@
 package com.example.petscarenew;
 
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 import junit.framework.TestCase;
 
-public class CreatePetTest extends TestCase {
+import java.util.List;
 
+public class CreatePetTest extends TestCase {
+    private List<Pet> petList;
     public void testValidateFields() {
         System.out.println("Insert valid inputs");
         CreatePet instance = new CreatePet();
@@ -24,6 +28,12 @@ public class CreatePetTest extends TestCase {
         String des="";
         Boolean expResult=false;
         Boolean result=instance.validateFieldsTest(name,age,des);
+        assertEquals(expResult,result);
+    }
+    public void testDeleteIfEmpty(){
+        PetAdapter instance = new PetAdapter();
+        Boolean expResult=false;
+        Boolean result=instance.deletePetFromIdTest(8, 0);
         assertEquals(expResult,result);
     }
     public void testName() {
@@ -62,4 +72,5 @@ public class CreatePetTest extends TestCase {
         Boolean result=instance.validateFieldsTest(name,age,des);
         assertEquals(expResult,result);
     }
+
 }

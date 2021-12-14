@@ -93,13 +93,13 @@ public class CreatePet extends BottomSheetDialogFragment {
             alertDialogBuilder.setTitle("Warning").setMessage("Please enter a valid name").show();
             return false;
         }
-        else if(Description.getText().toString().equalsIgnoreCase("")) {
+        if(Description.getText().toString().equalsIgnoreCase("")) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
             alertDialogBuilder.setTitle("Warning").setMessage("Please enter a valid description").show();
 
             return false;
         }
-        else if(Age.getText().toString().equalsIgnoreCase("")) {
+        if(Age.getText().toString().equalsIgnoreCase("")) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
             alertDialogBuilder.setTitle("Warning").setMessage("Please enter a valid Age").show();
             return false;
@@ -221,12 +221,12 @@ public class CreatePet extends BottomSheetDialogFragment {
             Log.d("myTag", "This is my message");
             return false;
         }
-        else if(des.equalsIgnoreCase("")) {
+        if(des.equalsIgnoreCase("")) {
             System.out.println("Please enter a valid description");
 
             return false;
         }
-        else if(Age.equalsIgnoreCase("")) {
+        if(Age.equalsIgnoreCase("")) {
             System.out.println("Please enter a valid Age");
             return false;
         }
