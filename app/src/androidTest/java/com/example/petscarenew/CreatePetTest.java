@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 import java.util.List;
 
 public class CreatePetTest extends TestCase {
-    private List<Pet> petList;
     public void testValidateFields() {
         System.out.println("Insert valid inputs");
         CreatePet instance = new CreatePet();

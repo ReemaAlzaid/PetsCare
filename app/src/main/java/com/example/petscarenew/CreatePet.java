@@ -80,13 +80,7 @@ public class CreatePet extends BottomSheetDialogFragment {
 
     public boolean validateFields() {
         int counter =0;
-        try{
-            int checkAge = Integer.parseInt(Age.getText().toString());
-        }catch (NumberFormatException ex) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
-            alertDialogBuilder.setTitle("Warning").setMessage("Age must be a number only").show();
-            return false;
-        }
+
 
         if(Petname.getText().toString().equalsIgnoreCase("")) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
@@ -112,6 +106,14 @@ public class CreatePet extends BottomSheetDialogFragment {
             return false;
         }
 
+        try{
+            int checkAge = Integer.parseInt(Age.getText().toString());
+        }catch (NumberFormatException ex) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
+            alertDialogBuilder.setTitle("Warning").setMessage("Age must be a number only").show();
+            return false;
+        }
+
         if(Age.getText().length()<=2 && Age.getText().length()>0)
             counter++;
         else {
@@ -120,7 +122,7 @@ public class CreatePet extends BottomSheetDialogFragment {
             return false;
         }
 
-        if(Description.getText().length()<=30 && Age.getText().length()>0)
+        if(Description.getText().length()<=30 && Description.getText().length()>0)
             counter++;
         else {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity, R.style.AppTheme_Dialog);
@@ -230,16 +232,17 @@ public class CreatePet extends BottomSheetDialogFragment {
             System.out.println("Please enter a valid Age");
             return false;
         }
-        try{
-            int checkAge = Integer.parseInt(Age);
-        }catch (NumberFormatException ex) {
-            System.out.println("Age must be a number only");
-            return false;
-        }
         if(name.length()<=15 && name.length()>0)
             counter++;
         else {
             System.out.println("Name must be less than or equal to 15");
+            return false;
+        }
+
+        try{
+            int checkAge = Integer.parseInt(Age);
+        }catch (NumberFormatException ex) {
+            System.out.println("Age must be a number only");
             return false;
         }
 
