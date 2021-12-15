@@ -21,6 +21,15 @@ public class CreatePetTest extends TestCase {
         Log.d("myTag", "This is my message");
         assertEquals(expResult,result);
     }
+    public void testAge() {
+        CreatePet instance = new CreatePet();
+        String name="Clifford";
+        String age="999";
+        String des="Clifford is my sister's dog he is the best";
+        Boolean expResult=false;
+        Boolean result=instance.validateFieldsTest(name,age,des);
+        assertEquals(expResult,result);
+    }
     public void testNothinginputs() {
         CreatePet instance = new CreatePet();
         String name="";
@@ -30,25 +39,10 @@ public class CreatePetTest extends TestCase {
         Boolean result=instance.validateFieldsTest(name,age,des);
         assertEquals(expResult,result);
     }
-    public void testDeleteIfEmpty(){
-        PetAdapter instance = new PetAdapter();
-        Boolean expResult=false;
-        Boolean result=instance.deletePetFromIdTest(8, 0);
-        assertEquals(expResult,result);
-    }
     public void testName() {
         CreatePet instance = new CreatePet();
         String name="Clifford is my sister's dog he is the best";
         String age="2";
-        String des="Clifford is my sister's dog he is the best";
-        Boolean expResult=false;
-        Boolean result=instance.validateFieldsTest(name,age,des);
-        assertEquals(expResult,result);
-    }
-    public void testAge() {
-        CreatePet instance = new CreatePet();
-        String name="Clifford";
-        String age="999";
         String des="Clifford is my sister's dog he is the best";
         Boolean expResult=false;
         Boolean result=instance.validateFieldsTest(name,age,des);
